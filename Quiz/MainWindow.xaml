@@ -4,9 +4,40 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Quiz"
+        xmlns:vm="clr-namespace:Quiz.ViewModels"
+        xmlns:views="clr-namespace:Quiz.Views" d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <!-- Automatyczny wybór widoku przez DataTemplate.
+Definiuje szablony danych (DataTemplate), które mówią:
+Jeśli ContentControl, ItemsControl dostaną obiekt 
+typu HomeViewModel, to mają automatycznie wyświetlić MyHomeView.
+Jeśli dostaną SecondViewModel, to wyświetl SecondView, etc. -->
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:CreateQuizViewModel}">
+            <views:CreateQuizView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SolveQuizViewModel}">
+            <views:SolveQuizView />
+        </DataTemplate>
+    </Window.Resources>
 
-    </Grid>
+    <DockPanel>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5"
+                HorizontalAlignment="Center">
+            <Button Content="Strona główna" Foreground="White" Background="DarkBlue"
+                Command="{Binding NavigateHomeCommand}" Margin="5"
+                Padding="10"/>
+            <Button Content="Drugi widok"  Foreground="White" Background="DarkGreen"
+                Command="{Binding NavigateSecondCommand}" Margin="5"
+                Padding="10"/>
+        </StackPanel>
+
+        <!--Dynamiczne ładowanie widoku na podstawie modelu widoku
+    ContentControl.Content będzie powiązany z właściwością CurrentViewModel 
+    w obiekcie, który jest aktualnym DataContext
+    To działa razem z tzw. DataTemplate-->
+
+        <ContentControl Content="{Binding CurrentViewModel}" Margin="10"/>
+    </DockPanel>
 </Window>
