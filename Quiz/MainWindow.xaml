@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:Quiz.ViewModels"
         xmlns:views="clr-namespace:Quiz.Views" d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="900" MinWidth="900" MinHeight="600">
     <!-- Automatyczny wybór widoku przez DataTemplate.
 Definiuje szablony danych (DataTemplate), które mówią:
 Jeśli ContentControl, ItemsControl dostaną obiekt 

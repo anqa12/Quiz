@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET9_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\antri\OneDrive - Politechnika Śląska\Desktop\sem4\progr_ob_i_graf\Quiz\Quiz\App.xaml
-31249105444
+4383245284
 
-17480578462
+19-2073200900
 2001031969389
-MainWindow.xaml;Views\CreateQuizView.xaml;Views\SolveQuizView.xaml;
+MainWindow.xaml;Views\CreateQuizView.xaml;Views\HomeView.xaml;Views\SolveQuizView.xaml;
 
 False
 

@@ -1,14 +1,99 @@
 ﻿<UserControl x:Class="Quiz.Views.CreateQuizView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Quiz.Views"
-        mc:Ignorable="d"
-        d:DesignHeight="450" d:DesignWidth="800">
-    <DockPanel>
-        <TextBlock Text="{Binding WelcomeMessage}" FontSize="{Binding FontSize}"
-                Margin="20" DockPanel.Dock="Top"/>
-        <Slider Minimum="5" Maximum="50" Value="{Binding FontSize}" DockPanel.Dock="Bottom" />
-    </DockPanel>
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="clr-namespace:Quiz.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:CreateQuizViewModel}"
+             mc:Ignorable="d"
+    d:DesignHeight="500" d:DesignWidth="900"
+    Background="#f8f9fa">
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" MinWidth="300"/>
+            <ColumnDefinition Width="3*" MinWidth="400"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- LEWA STRONA: EDYCJA PYTANIA -->
+        <Border Grid.Column="0" CornerRadius="10" Background="White" Padding="20" Margin="0,0,10,0"
+                BorderBrush="#ddd" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="Edycja pytania" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                <TextBlock Text="Treść pytania:" FontWeight="SemiBold"/>
+                <TextBox Text="{Binding NewQuestionText, UpdateSourceTrigger=PropertyChanged}" 
+                         Margin="0,5,0,15" Height="30" TextWrapping="Wrap"/>
+
+                <TextBlock Text="Odpowiedzi:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+
+                <StackPanel>
+                    <!-- Odpowiedź 1 -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="A:" Margin="0,5,5,0"/>
+                        <TextBox Text="{Binding SelectedQuestion.Answers[0].Text, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+
+                    </StackPanel>
+                    <StackPanel>
+                        <RadioButton Content="Poprawna" GroupName="Answer1" IsChecked="{Binding SelectedQuestion.Answers[0].IsCorrect, Mode=TwoWay}"/>
+                        <RadioButton Content="Niepoprawna" GroupName="Answer1" IsChecked="{Binding SelectedQuestion.Answers[0].IsCorrect, Mode=TwoWay}"/>
+                    </StackPanel>
+
+                    <!-- Odpowiedź 2 -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="B:" Margin="0,5,5,0"/>
+                        <TextBox Text="{Binding SelectedQuestion.Answers[1].Text, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <RadioButton Content="Poprawna" GroupName="Answer2" IsChecked="{Binding SelectedQuestion.Answers[1].IsCorrect, Mode=TwoWay}"/>
+                        <RadioButton Content="Niepoprawna" GroupName="Answer2" IsChecked="{Binding SelectedQuestion.Answers[1].IsCorrect, Mode=TwoWay}"/>
+                    </StackPanel>
+
+                    <!-- Odpowiedź 3 -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="C:" Margin="0,5,5,0"/>
+                        <TextBox Text="{Binding SelectedQuestion.Answers[2].Text, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <RadioButton Content="Poprawna" GroupName="Answer3" IsChecked="{Binding SelectedQuestion.Answers[2].IsCorrect, Mode=TwoWay}"/>
+                        <RadioButton Content="Niepoprawna" GroupName="Answer3" IsChecked="{Binding SelectedQuestion.Answers[2].IsCorrect, Mode=TwoWay}"/>
+                    </StackPanel>
+
+                    <!-- Odpowiedź 4 -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="D:" Margin="0,5,5,0"/>
+                        <TextBox Text="{Binding SelectedQuestion.Answers[3].Text, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <RadioButton Content="Poprawna" GroupName="Answer4" IsChecked="{Binding SelectedQuestion.Answers[3].IsCorrect, Mode=TwoWay}"/>
+                        <RadioButton Content="Niepoprawna" GroupName="Answer4" IsChecked="{Binding SelectedQuestion.Answers[3].IsCorrect, Mode=TwoWay}"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- PRAWA STRONA: LISTA PYTAŃ I PRZYCISKI -->
+        <Border Grid.Column="1" CornerRadius="10" Background="White" Padding="20" Margin="10,0,0,0"
+                BorderBrush="#ddd" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="Lista pytań" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+                <ListBox ItemsSource="{Binding Questions}" 
+         SelectedItem="{Binding SelectedQuestion}" 
+         Height="300">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Text}" FontSize="14"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                    <Button Content="Dodaj pytanie" Command="{Binding AddQuestionCommand}" Margin="5"/>
+                    <Button Content="Usuń pytanie" Command="{Binding RemoveQuestionCommand}" Margin="5"/>
+                    <Button Content="Edytuj pytanie" Command="{Binding EditQuestionCommand}" Margin="5"/>
+                </StackPanel>
+
+                <Button Content="Zapisz quiz" Command="{Binding SaveQuizCommand}" Margin="0,15,0,0"/>
+            </StackPanel>
+        </Border>
+
+    </Grid>
 </UserControl>

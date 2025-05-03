@@ -24,3 +24,5 @@ C:\Users\antri\OneDrive - Politechnika Śląska\Desktop\sem4\progr_ob_i_graf\Qui
 C:\Users\antri\OneDrive - Politechnika Śląska\Desktop\sem4\progr_ob_i_graf\Quiz\Quiz\obj\Debug\net9.0-windows\Quiz.sourcelink.json
 C:\Users\antri\OneDrive - Politechnika Śląska\Desktop\sem4\progr_ob_i_graf\Quiz\Quiz\obj\Debug\net9.0-windows\Quiz.genruntimeconfig.cache
 C:\Users\antri\OneDrive - Politechnika Śląska\Desktop\sem4\progr_ob_i_graf\Quiz\Quiz\obj\Debug\net9.0-windows\ref\Quiz.dll
+C:\Users\antri\OneDrive - Politechnika Śląska\Desktop\sem4\progr_ob_i_graf\Quiz\Quiz\obj\Debug\net9.0-windows\Views\HomeView.g.cs
+C:\Users\antri\OneDrive - Politechnika Śląska\Desktop\sem4\progr_ob_i_graf\Quiz\Quiz\obj\Debug\net9.0-windows\Views\HomeView.baml

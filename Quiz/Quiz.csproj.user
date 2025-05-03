@@ -5,6 +5,9 @@
     <Compile Update="Views\CreateQuizView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\HomeView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\SolveQuizView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

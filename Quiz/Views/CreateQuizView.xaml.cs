@@ -10,6 +10,7 @@ namespace Quiz.Views
         public CreateQuizView()
         {
             InitializeComponent();
+            DataContext = new ViewModels.CreateQuizViewModel();
         }
     }
 }
